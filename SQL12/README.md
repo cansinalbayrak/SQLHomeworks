@@ -29,8 +29,8 @@ SELECT MIN(replacement_cost) FROM film
 ```
 4. payment tablosunda en fazla sayıda alışveriş yapan müşterileri(customer) sıralayınız.
 ```SQL
-SELECT customer.customer_id, CONCAT(customer.first_name, ' ', customer.last_name) AS "customer" FROM payment
+SELECT payment.customer_id, CONCAT(customer.first_name, ' ', customer.last_name) AS "customer" FROM payment
 JOIN customer ON payment.customer_id = customer.customer_id
-GROUP BY customer.customer_id
+GROUP BY payment.customer_id, customer.first_name, customer.last_name
 ORDER BY COUNT(payment.amount) DESC;
 ```
